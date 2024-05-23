@@ -10,41 +10,43 @@
       function checkInclusion(s1, s2) {
         if (s1.length > s2.length) return false;
 
-        const charCount = new Array(26).fill(0);
+        let charCount = new Array(26).fill(0);
 
         for (let i = 0; i < s1.length; i++) {
-          const index = s1.charCodeAt(i) - "a".charCodeAt(0);
-          charCount[index]++;
+          const elemId = s1.charCodeAt(i) - "a".charCodeAt(0);
+          charCount[elemId]++;
         }
 
         let left = 0;
         let right = 0;
-        let count = s1.length;
+        let count = 0;
 
         while (right < s2.length) {
-          const rightIndex = s2.charCodeAt(right) - "a".charCodeAt(0);
-          if (charCount[rightIndex] > 0) {
+          const rightElemId = s2.charCodeAt(right) - "a".charCodeAt(0);
+
+          if (charCount[rightElemId] > 0) {
             count--;
           }
-          charCount[rightIndex]--;
+          charCount[rightElemId]--;
           right++;
 
-          if (count == 0) return true;
+          if (count === 0) return true;
 
           if (right - left === s1.length) {
-            const leftIndex = s2.charCodeAt(left) - "a".charCodeAt(0);
-            if (charCount[leftIndex] >= 0) {
+            const leftElemId = s2.charCodeAt(left) - "a".charCodeAt(0);
+            if (charCount[leftElemId] >= 0) {
               count++;
             }
-            charCount[leftIndex]++;
+            charCount[leftElemId]++;
             left++;
           }
+
+          return false;
         }
-        return false;
       }
 
-      const s1 = "ab";
-      const s2 = "eidbao";
+      const s1 = "muneeb";
+      const s2 = "kbikjbkklnlknoimuneebknkn";
       console.log(checkInclusion(s1, s2));
     </script>
   </body>
