@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      padding: 1.9rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+    button {
+      padding: 0.5rem 1.2rem;
+    }
+  </style>
+  <body>
+    <textarea
+      name=""
+      id="inp"
+      placeholder="Enter the value"
+      cols="120"
+      rows="11"
+    ></textarea>
+
+    <button onclick="repeatedCharacters()">Check</button>
+    <div class="maxCount"></div>
+    <div id="display"></div>
+    <script>
+      function repeatedCharacters(params) {
+        let string = document.querySelector("#inp").value.replace(/\s/g, "");
+        let charCount = {};
+        let maxChar = "";
+        let maxCount = 0;
+        for (let i = 0; i < string.length; i++) {
+          const key = string[i];
+          charCount[key] = charCount[key] ? charCount[key] + 1 : 1;
+          if (charCount[key] > maxCount) {
+            maxChar = key;
+            maxCount = charCount[key];
+          }
+        }
+
+        let data = Object.entries(charCount);
+        let clutter =
+          data.length > 0 &&
+          data
+            .map((item) => {
+              return `<div>
+              <p>${item[0]}:${item[1]}</p>
+            </div>`;
+            })
+            .join("");
+        document.querySelector("#display").innerHTML = clutter;
+        document.querySelector(".maxCount").innerHTML = `<div>
+              <p>${maxChar} is the most repeated character in your string. ${maxChar}:${maxCount}.</p>
+            </div>`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Stack With Class Episode 15</h1>
+    <script>
+      class Stack {
+        list = [];
+        currentSize;
+        maxSize;
+
+        constructor(Size) {
+          this.maxSize = Size;
+          this.currentSize = this.list.length;
+        }
+        push(newVal) {
+          if (this.currentSize <= this.maxSize) {
+            this.list[this.currentSize] = newVal;
+            this.currentSize++;
+          } else {
+            alert("thw maxSize exceeded ");
+          }
+        }
+        pop() {
+          if (this.currentSize > 0) {
+            this.currentSize--;
+            this.list.length = this.currentSize;
+          } else {
+            alert("list is already empty");
+          }
+        }
+        display() {
+          console.log(this.list);
+        }
+      }
+
+      st1 = new Stack(5);
+      st1.push(8);
+      st1.pop();
+      st1.display();
+    </script>
+  </body>
+</html>

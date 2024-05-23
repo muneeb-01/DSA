@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="elem">
+    <button onclick="delElm()">Click to proceed</button>
+
+    <script>
+
+    // Creating an array
+    let arr = [20,10,50,14,26,35];
+    // position of deletion
+    let position = 0;
+    //loop for deletion
+        for (let i = 0; i < arr.length; i++) {
+            if(i>=position){
+                arr[i] = arr[i+1]
+            }
+        }
+    //removing undefined value of an array
+        arr.length = arr.length-1;
+    //check it on console
+        console.log(arr)
+
+    //taking position of deletion by user 
+    function delElm(){
+        let data = [20,10,50,14,26,35];
+        let position = document.getElementById("elem").value
+        position = parseInt(position);
+
+        //validation so that only nembers between array lenght can be entered and alphabets are also not working
+        if(position <= data.length-1 && position >= 0 && typeof parseInt(position) === "number"){
+        
+        //loop for deletion
+        for (let i = 0; i < data.length; i++) {
+            if(i>=position){
+                data[i] = data[i+1];
+            }
+        }
+
+        //managing the undefined value
+        data.length = data.length - 1;
+
+        // write the values of array on document with index from 1 to data.lenght
+        data.forEach((element,idx) => {
+            document.write(`<br/>The value of ${idx +1} position in an array is ${element} after the deletion <br/>`)    
+        });
+        
+    }else{
+        console.error("Invalid Number")
+    }
+
+    }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const SudokuBoard = [
+        ["1", ".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", ".", "."],
+        ["7", ".", ".", ".", ".", ".", ".", ".", "."],
+      ];
+
+      function isValidSudoko(board) {
+        let count = 0;
+        //check Rows
+        for (let i = 0; i < 9; i++) {
+          const row = new Set();
+          for (let j = 0; j < 9; j++) {
+            const value = board[i][j];
+            if (value !== "." && row.has(value)) {
+              console.log(`row ${i} and column ${j} matched`);
+              return false;
+            }
+            row.add(value);
+          }
+        }
+
+        //check Column
+        for (let i = 0; i < 9; i++) {
+          const column = new Set();
+          for (let j = 0; j < 9; j++) {
+            const value = board[j][i];
+            if (value !== "." && column.has(value)) {
+              console.log(`row ${i} and column ${j} matched`);
+              return false;
+            }
+            column.add(value);
+          }
+        }
+
+        //subBoxes
+        for (let subrow = 0; subrow < 9; subrow += 3) {
+          for (let subCol = 0; subCol < 9; subCol += 3) {
+            const numInSubBox = new Set();
+            for (let row = 0; row < 3; row++) {
+              for (let col = 0; col < 3; col++) {
+                const value = board[subrow + row][subCol + col];
+                if (value !== "." && numInSubBox.has(value)) {
+                  console.log(
+                    `row ${subrow + row} and column ${subCol + col} matched`
+                  );
+                  return false;
+                }
+                numInSubBox.add(value);
+              }
+            }
+          }
+        }
+        return true;
+      }
+      console.log(isValidSudoko(SudokuBoard));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="addItemInp" type="text" />
+    <button id="addBtn">Add Item</button>
+    <div style="margin-top: 4px">
+      <button id="deleteBtn">Delete Item</button>
+    </div>
+    <div style="margin-top: 4px">
+      <button id="frontCheck">FrontCheck</button>
+    </div>
+    <div style="margin-top: 4px">
+      <button id="BackCheck">RearCheck</button>
+    </div>
+    <div style="margin-top: 4px">
+      <button id="CheckEmpty">Check Empty</button>
+    </div>
+    <div style="margin-top: 4px">
+      <p id="queueValue"></p>
+    </div>
+    <script>
+      let queue = [];
+      let currentSize = queue.length;
+      let maxSize = 5;
+
+      function use(params) {
+        const addItemInp = document.querySelector("#addItemInp");
+        const addBtn = document
+          .querySelector("#addBtn")
+          .addEventListener("click", function () {
+            let inpval = addItemInp.value;
+            if (inpval !== "") {
+              enQueue(inpval);
+              addItemInp.value = "";
+              displayalue();
+            } else {
+              alert("add something in input");
+            }
+          });
+
+        const deleteBtn = document
+          .querySelector("#deleteBtn")
+          .addEventListener("click", function () {
+            deQueue();
+            displayalue();
+          });
+
+        const frontBtn = document
+          .querySelector("#frontCheck")
+          .addEventListener("click", function () {
+            document.querySelector("#queueValue").innerHTML = front();
+          });
+
+        const BackCheck = document
+          .querySelector("#BackCheck")
+          .addEventListener("click", function () {
+            document.querySelector("#queueValue").innerHTML = rear();
+          });
+        const emptyCheck = document
+          .querySelector("#CheckEmpty")
+          .addEventListener("click", function () {
+            if (isEmpty()) {
+              let trueParagraph = "Your Queue is empty";
+              document.querySelector("#queueValue").innerHTML = trueParagraph;
+            } else {
+              let falseParagraph = "Your Queue is not empty ";
+              document.querySelector("#queueValue").innerHTML = falseParagraph;
+            }
+          });
+      }
+      use();
+
+      // add new value in queue
+      function enQueue(val) {
+        if (currentSize < maxSize) {
+          queue[currentSize] = val;
+          currentSize++;
+        } else {
+          alert("Your Queue size exceeded");
+        }
+      }
+      function deQueue() {
+        if (!isEmpty()) {
+          for (let i = 0; i < queue.length; i++) {
+            queue[i] = queue[i + 1];
+          }
+          currentSize--;
+          queue.length = currentSize;
+        } else {
+          alert("mo one in the queue");
+        }
+      }
+      function front() {
+        if (!isEmpty()) {
+          const front = queue[0];
+          return front;
+        } else {
+          alert("empty");
+          return "";
+        }
+      }
+      function rear() {
+        if (!isEmpty()) {
+          const rear = queue[currentSize - 1];
+          return rear;
+        } else {
+          alert("empty");
+          return "";
+        }
+      }
+      function isEmpty() {
+        if (currentSize <= 0) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      function displayalue() {
+        const displayQueue = document.querySelector("#queueValue");
+        if (isEmpty()) {
+          let trueParagraph = "Your Queue is empty";
+          document.querySelector("#queueValue").innerHTML = trueParagraph;
+        } else {
+          document.querySelector("#queueValue").innerHTML = "";
+          displayQueue.innerHTML = `Your Queue value is equal to [${queue}], and queue length is ${queue.length}`;
+        }
+      }
+
+      // Default function tto enqueue and dequeue in queue
+      let defaultQueue = [];
+      function defaultEnQueue(val) {
+        defaultQueue.push(val);
+      }
+      function defaultDeQueue() {
+        defaultQueue.shift();
+      }
+    </script>
+  </body>
+</html>

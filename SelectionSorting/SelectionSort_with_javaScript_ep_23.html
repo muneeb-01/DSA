@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data = [20, 1, 4, 0, 53];
+      function selectionSorting(arr) {
+        let min;
+        for (let i = 0; i < arr.length; i++) {
+          min = i;
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[min] > arr[j]) {
+              min = j;
+            }
+          }
+          [arr[min], arr[i]] = [arr[i], arr[min]];
+        }
+        return arr;
+      }
+      let sortedData = selectionSorting(data);
+      console.log(sortedData);
+    </script>
+  </body>
+</html>

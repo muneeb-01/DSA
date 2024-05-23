@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Binary Search with Iterative Search</h1>
+    <!-- binary search is only work with sorted data -->
+    <script>
+      let data = [1, 4, 10, 2, 6, 78, 21, 0];
+
+      function sorting(data) {
+        for (let i = 0; i < data.length; i++) {
+          for (let j = 0; j < data.length; j++) {
+            if (data[j] > data[j + 1]) {
+              let temp = data[j];
+              data[j] = data[j + 1];
+              data[j + 1] = temp;
+            }
+          }
+        }
+        return data;
+      }
+
+      let sortedData = sorting(data);
+      let find = 444;
+      let start = 0;
+      let end = sortedData.length - 1;
+      let position;
+
+      function searchIteratively() {
+        while (start <= end) {
+          let midpoint = Math.floor((start + end) / 2);
+          if (sortedData[midpoint] === find) {
+            position = midpoint;
+            return sortedData[midpoint];
+          } else if (sortedData[midpoint] < find) {
+            start = midpoint + 1;
+          } else {
+            end = midpoint - 1;
+          }
+        }
+        return "not found";
+      }
+      const search = searchIteratively();
+      console.log(search);
+    </script>
+  </body>
+</html>

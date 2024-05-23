@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>circular queue in javascript</h1>
+    <script>
+      class QUEUE {
+        constructor(size) {
+          this.front = this.rear = -1;
+          this.maxSize = size;
+          this.items = new Array(size);
+          this.currentSize = 0;
+        }
+        enQueue(val) {
+          if (this.currentSize !== this.maxSize && val !== undefined) {
+            if (this.rear == this.maxSize - 1) {
+              this.rear = 0;
+            } else {
+              this.rear++;
+            }
+            this.items[this.rear] = val;
+            this.currentSize++;
+            if (this.front == -1) {
+              this.front = this.rear;
+            }
+          } else {
+            alert("Your Queue is full or may be the value is undefined");
+          }
+        }
+        dequeue() {
+          if (this.currentSize <= 0) {
+            this.front = this.rear = -1;
+            alert("No body in the queue");
+          } else {
+            this.items[this.front] = null;
+            if (this.front == this.maxSize - 1) {
+              this.front = 0;
+            } else {
+              this.front++;
+            }
+            this.currentSize--;
+          }
+        }
+        Front() {
+          if (this.currentSize !== 0) {
+            console.log(this.items[this.front]);
+          } else {
+            alert("no body in the Queue");
+          }
+        }
+        Rear() {
+          if (this.currentSize !== 0) {
+            console.log(this.items[this.rear]);
+          } else {
+            alert("no body in the Queue");
+          }
+        }
+      }
+
+      const queue = new QUEUE(10);
+    </script>
+  </body>
+</html>

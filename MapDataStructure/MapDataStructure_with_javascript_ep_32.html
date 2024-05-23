@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data = new Map([
+        ["name", "muneeb"],
+        ["age", 20],
+        [true, "male"],
+        [100, "Hundred"],
+      ]);
+
+      //   data.set("color", "green");
+      //   console.log(data.get("name"));
+      //   console.log(data.has("name"));
+      //   console.log(data.clear());
+      //   console.log(data);
+
+      function deleteFromMap(data) {
+        let count = 0;
+        for (const [key, values] of data) {
+          if (count === 1) {
+            data.delete(key);
+            console.log(data);
+
+            break;
+          }
+          console.log(data);
+          count++;
+        }
+      }
+      deleteFromMap(data);
+
+      //   data.forEach((value, key) => {
+      //     console.log(key, value);
+      //   });
+    </script>
+  </body>
+</html>

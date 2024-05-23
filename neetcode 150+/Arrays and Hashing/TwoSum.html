@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //         Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+      // You may assume that each input would have exactly one solution, and you may not use the same element twice.
+      // You can return the answer in any order.
+
+      // Example usage
+      const nums2 = [3, 3, 4, 2];
+      const target2 = 6;
+      const nums1 = [2, 7, 11, 15];
+      const target1 = 9;
+
+      function twoSum(nums, target) {
+        const seen = new Set(nums);
+
+        for (let i = 0; i < nums.length; i++) {
+          const currElement = nums[i];
+          const complement = target - currElement;
+
+          if (seen.has(complement) && complement !== nums[i]) {
+            return [i + 1, nums.indexOf(complement) + 1];
+          }
+        }
+      }
+
+      console.log(twoSum(nums1, target1));
+    </script>
+  </body>
+</html>

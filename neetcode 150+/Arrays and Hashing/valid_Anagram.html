@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+      // An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+      let s = "Muneeb";
+      let t = "muneeb";
+
+      function checkAnagram(s, t) {
+        let charCount = {};
+        if (s.length !== t.length) {
+          console.warn("the given words are not the anagram");
+          return;
+        }
+        for (const ch of s) {
+          charCount[ch] = charCount[ch] ? charCount[ch] + 1 : 1;
+        }
+        for (const ch of t) {
+          if (!charCount[ch]) {
+            console.log("the given words are not an anagram");
+            return false;
+          }
+          charCount[ch]--;
+        }
+        console.log("the given words are an anagram");
+      }
+      checkAnagram(s.toLowerCase(), t.toLowerCase());
+    </script>
+  </body>
+</html>

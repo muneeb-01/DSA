@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class List {
+        constructor() {
+          this.head = null;
+          this.tail = this.head;
+          this.length = 0;
+        }
+        appendNode(data) {
+          if (data === undefined) {
+            console.log("Undefined Data in a parameter");
+            return;
+          }
+          let node = {
+            value: data,
+            next: null,
+          };
+          if (this.head === null) {
+            this.head = node;
+            this.tail = this.head;
+            this.length++;
+            return;
+          }
+          if (this.head !== null) {
+            this.tail.next = node;
+            this.tail = node;
+            this.length++;
+          }
+        }
+        searchNode(data) {
+          if (data === undefined) {
+            console.warn("Undefined Value");
+            return;
+          }
+          let prev = this.head;
+          let counter = 0;
+          while (prev) {
+            counter++;
+            if (data == prev.value) {
+              // for value and its node number
+              console.log(counter + " : " + prev.value, prev);
+              return counter;
+            }
+            prev = prev.next;
+          }
+          console.log("Not Found");
+          return false;
+        }
+      }
+      const List1 = new List();
+      List1.appendNode(100);
+      List1.appendNode(200);
+      List1.appendNode(300);
+      List1.appendNode(400);
+      List1.appendNode(500);
+      List1.appendNode(600);
+      List1.searchNode(200);
+      console.log(List1);
+    </script>
+  </body>
+</html>

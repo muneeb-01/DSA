@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traversing_of_an_Array</title>
+</head>
+<body>
+    <input type="text" id="elem">
+    <button onclick="getElement()">Click to proceed</button>
+
+    <input type="text" id="element">
+    <button onclick="getElem()">Click to proceed Validation</button>
+
+    <script>
+        //HTML with basic array
+        let data = [12,54,87,64,24,54,87,98,65,35];
+        
+        //Traversing with loop
+        for(let i=0; i<data.length; i++){
+            document.write(`array ${i+1} is equal to ${data[i]} <br/>`)
+        }
+
+        //Accessing Specific elements
+        let x=4;
+        document.write(data[x])
+
+        //Accessing element with text input by the user and button
+        function getElement(){
+            let val = document.getElementById('elem').value;
+            alert(`The ${val} position in array is equal to ${data[val-1]}`)
+        }
+
+        //validation of the previous step
+        function getElem(){
+            let val = document.getElementById('element').value;
+            if(val<=    data.length && val>=0 && typeof parseInt(val) === "number"){
+                alert(`The ${val} position in array is equal to ${data[val-1]}`)
+            }
+            else{
+                alert('incorrect value')
+            }
+            
+        }
+        
+
+    </script>
+</body>
+</html>

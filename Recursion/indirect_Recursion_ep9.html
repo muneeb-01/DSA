@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indirect Recursion</title>
+  </head>
+  <body>
+    <button>click me</button>
+    <script>
+      let money = 1000;
+      let counter = 0;
+      function apple(x) {
+        const btn = document.querySelector("button");
+        if (x < 0) {
+          console.log("you have not enough money left");
+          return;
+        }
+        setTimeout(() => {
+          banana(x);
+        }, 2000);
+      }
+
+      function banana(x) {
+        console.log(x);
+        console.log((counter = counter + 1));
+        apple(x - 275);
+      }
+      apple(money);
+    </script>
+  </body>
+</html>

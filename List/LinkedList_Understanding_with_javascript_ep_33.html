@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Linked List in javaScript</h1>
+    <script>
+      //First part is known as Head
+      //Last part is known as Tail
+      //Node -> one node contains two things Value , next
+      //Here next is the address of next node
+      //Nodes -> Object
+      class List {
+        constructor(data) {
+          this.head = {
+            value: data,
+            next: null,
+          };
+          this.tail = this.head;
+          this.size = 1;
+        }
+        appendNode(nodeData) {
+          let newNode = {
+            value: nodeData,
+            next: null,
+          };
+          this.tail.next = newNode;
+          this.tail = newNode;
+          this.size++;
+        }
+      }
+      const List1 = new List(200);
+      List1.appendNode(400);
+      List1.appendNode(100);
+      List1.appendNode(400);
+      console.log(List1);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class List {
+        constructor() {
+          this.head = {
+            value: 100,
+            next: null,
+          };
+          this.tail = this.head;
+          this.length = 1;
+        }
+        insertAt(data, index) {
+          if (index <= 0 || index > this.length + 1) {
+            console.error("invalid POsition");
+            return;
+          }
+          //Create a new Node variable
+          let newNode = { value: data, next: null };
+          //Insertion in first or head position
+          if (index === 1) {
+            newNode.next = this.head;
+            this.head = newNode;
+            this.length++;
+            return;
+          }
+          let current = this.head;
+          let currentIdx = 1;
+          let prev = null;
+
+          while (currentIdx < index) {
+            currentIdx++;
+            if (current.next) {
+              prev = current;
+              current = current.next;
+            }
+          }
+          if (currentIdx === this.length + 1) {
+            current.next = newNode;
+            this.length++;
+            this.tail = newNode;
+            return;
+          }
+          if (index === undefined) {
+            this.tail.next = newNode;
+            this.tail = newNode;
+            this.length++;
+            return;
+          }
+          newNode.next = current;
+          prev.next = newNode;
+          this.length++;
+        }
+      }
+      const List1 = new List();
+      List1.insertAt(600);
+      console.log(List1);
+    </script>
+  </body>
+</html>

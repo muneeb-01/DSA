@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function checkInclusion(s1, s2) {
+        if (s1.length > s2.length) return false;
+
+        const charCount = new Array(26).fill(0);
+
+        for (let i = 0; i < s1.length; i++) {
+          const index = s1.charCodeAt(i) - "a".charCodeAt(0);
+          charCount[index]++;
+        }
+
+        let left = 0;
+        let right = 0;
+        let count = s1.length;
+
+        while (right < s2.length) {
+          const rightIndex = s2.charCodeAt(right) - "a".charCodeAt(0);
+          if (charCount[rightIndex] > 0) {
+            count--;
+          }
+          charCount[rightIndex]--;
+          right++;
+
+          if (count == 0) return true;
+
+          if (right - left === s1.length) {
+            const leftIndex = s2.charCodeAt(left) - "a".charCodeAt(0);
+            if (charCount[leftIndex] >= 0) {
+              count++;
+            }
+            charCount[leftIndex]++;
+            left++;
+          }
+        }
+        return false;
+      }
+
+      const s1 = "ab";
+      const s2 = "eidbao";
+      console.log(checkInclusion(s1, s2));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // You are given an integer array heights where heights[i] represents the height of the
+      // You may choose any two bars to form a container. Return the maximum amount of water a container can store.
+
+      // Problem Statement:
+      // You're given an array heights, where heights[i] represents the height of the i-th bar. You need to find two bars such that, when forming a container between them, the container can hold the maximum amount of water. The width of the container is the distance between the two selected bars along the x-axis, and the height of the container is the minimum of the two bars' heights.
+
+      function maxArea(heights) {
+        let maxArea = 0;
+        if (heights.length <= 2) return maxArea; //there must be three blocks to trap the rain water
+        let left = 0;
+        let right = heights.length - 1;
+
+        while (left < right) {
+          const width = right - left;
+          const minHeight = Math.min(heights[left], heights[right]);
+          const area = width * minHeight;
+          maxArea = Math.max(maxArea, area);
+
+          if (heights[left] < heights[right]) {
+            left++;
+          } else {
+            right--;
+          }
+        }
+
+        return maxArea;
+      }
+
+      // Example usage:
+      const heights = [1, 8, 6, 2, 5, 6, 2, 3, 0];
+      console.log(
+        "Maximum amount of water that can be held:",
+        maxArea(heights)
+      );
+    </script>
+  </body>
+</html>

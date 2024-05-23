@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let queue = [20, 30, 40];
+      let currentSize = queue.length;
+      let maxSize = 5;
+
+      // add new value in queue
+      function enQueue(val) {
+        if (currentSize < maxSize) {
+          queue[currentSize] = val;
+          currentSize++;
+        } else {
+          alert("Your Queue size exceeded");
+        }
+
+        console.log(queue);
+      }
+      enQueue(10);
+
+      function deQueue() {
+        if (currentSize > 0) {
+          for (let i = 0; i < queue.length; i++) {
+            queue[i] = queue[i + 1];
+          }
+          currentSize--;
+          queue.length = currentSize;
+          console.log(queue);
+        } else {
+          alert("mo one in the queue");
+        }
+      }
+      deQueue();
+
+      // Default function tto enqueue and dequeue in queue
+      let defaultQueue = [];
+      function defaultEnQueue(val) {
+        defaultQueue.push(val);
+        console.log(defaultQueue);
+      }
+      function defaultDeQueue() {
+        defaultQueue.shift();
+        console.log(defaultQueue);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="data" value="" type="text" />
+    <button onclick="isPalindrome()">Check</button>
+    <h1 id="result"></h1>
+    <script>
+      function isPalindrome() {
+        let originlData = document
+          .querySelector("#data")
+          .value.replace(/\s/g, "");
+        let data = originlData.toLowerCase();
+        let start = 0;
+        let end = data.length - 1;
+        let result = true;
+        if (data.length === 0) {
+          result = false;
+          const H1 = (document.querySelector(
+            "#result"
+          ).innerHTML = `Please!!! enter some values`);
+        }
+        while (end > start) {
+          if (data[start] !== data[end]) {
+            result = false;
+            const H1 = (document.querySelector(
+              "#result"
+            ).innerHTML = `${originlData.toUpperCase()} is not a palindrom. `);
+          }
+
+          start++;
+          end--;
+        }
+        if (result == true) {
+          const H1 = (document.querySelector(
+            "#result"
+          ).innerHTML = `${originlData.toUpperCase()} is a palindrom.`);
+        }
+        return result;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // head recursion function return decreasing values because it run the console before if condition start working and function goes in stack during if condition is working
+      function head(x) {
+        console.log(x);
+        if (x > 0) {
+          head(x - 1);
+        }
+      }
+      head(5);
+
+      // tail recursion function return increasing values because it run the console after if condition become false and function goes in stack during if condition is working
+      function tail(x) {
+        if (x > 0) {
+          tail(x - 1);
+        }
+        console.log(x);
+      }
+      tail(5);
+    </script>
+  </body>
+</html>

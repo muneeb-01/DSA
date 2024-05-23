@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="NewEl" placeholder="New Element Here">
+    <input type="text" id="NewPos" placeholder="New Position Here">
+    <button onclick={chalao()}>CHECK</button>
+
+    <script>
+        //HTML with basic array
+
+        let data = [12,54,87,64,24,54,87,98,65,35];
+        let newEl = 85;
+        let position = 9;
+
+        //reverse loop
+        for(let i=data.length-1; i>=0; i--){
+            document.write(`<br/> the position ${i+1} of an array is ${data[i]} <br/>`)
+        }
+
+        // insertion algorithm
+        for(let i=data.length-1; i>=0; i--){
+            if (i>=position) {
+                data[i+1] = data[i]
+                if(i== position){
+                    data[i] = newEl
+                }
+            }
+        }
+        console.log(data)
+
+        function chalao(){
+        
+            let data = [12,54,87,64,24,54,87,98,65,35];
+            let EL = document.getElementById("NewEl").value
+            EL = parseInt(EL)
+            let Pos = document.getElementById("NewPos").value
+
+            if(Pos<data.length && Pos>=0){
+
+        for(let i=data.length-1; i>=0; i--){
+            if(i>=Pos){
+                data[i+1] = data[i];
+                if(i==Pos){
+                    data[i] = EL
+                }
+            }
+        }
+    }else{
+        alert("NON-Valid Number")
+    }
+    for(let i=0; i<data.length; i++){
+    document.write(`<br/> The value of ${i+1} position of an array is ${data[i]} <br/>`)
+    }
+    }
+    </script>
+</body>
+</html>

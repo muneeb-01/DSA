@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+      let nums = [1, 1, 1, 2, 3, 3, 4];
+      const k = 2;
+
+      function frequentElements(arr, k) {
+        let kFrequentElements = [];
+        let numCount = {};
+
+        for (const num of arr) {
+          numCount[num] = numCount[num] + 1 || 1;
+          if (numCount[num] >= k && !kFrequentElements.includes(num)) {
+            kFrequentElements.push(num);
+          }
+        }
+
+        return kFrequentElements;
+      }
+      console.log(frequentElements(nums, k));
+    </script>
+  </body>
+</html>

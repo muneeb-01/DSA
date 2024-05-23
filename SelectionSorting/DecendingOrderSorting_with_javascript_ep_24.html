@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let arr = [45, 23, 65, 87, 9, 1];
+
+    function decendingSorting(arr) {
+      let minId;
+      for (let i = 0; i < arr.length; i++) {
+        minId = i;
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[j] > arr[minId]) {
+            minId = j;
+          }
+          let temp = arr[minId];
+          [arr[i], arr[minId]] = [arr[minId], arr[i]];
+        }
+      }
+      return arr;
+    }
+
+    console.log(decendingSorting(arr));
+  </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const s = "XYYX";
+      const k = 2;
+      function repeatingCharacterWithReplacement(s, k) {
+        let maxlength = 0;
+        let left = 0;
+        let charcount = {};
+        let maxCount = 0;
+
+        for (let right = 0; right < s.length; right++) {
+          charcount[s[right]] = (charcount || 0) + 1;
+          maxCount = Math.max(maxCount, charcount[s[right]]);
+
+          if (right - left + 1 - maxCount > k) {
+            charcount[s[left]]--;
+            left++;
+          }
+          maxlength = Math.max(maxlength, right - left + 1);
+        }
+
+        return maxlength;
+      }
+
+      console.log(repeatingCharacterWithReplacement(s, k));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let s = "muneebmughal";
+
+      function longestSubstring(str) {
+        let maxLength = 0;
+        let start = 0;
+        let charmap = {};
+
+        for (let end = 0; end < str.length; end++) {
+          let key = str[end];
+          if (charmap[key] !== undefined && charmap[key] >= start) {
+            start = charmap[key] + 1;
+          }
+          charmap[key] = end;
+          maxLength = Math.max(maxLength, end - start + 1);
+        }
+        return maxLength;
+      }
+
+      console.log(longestSubstring(s));
+    </script>
+  </body>
+</html>

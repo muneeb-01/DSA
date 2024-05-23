@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data1 = [89, 90, 65, 73, 65, 43, 82, 1];
+      let data2 = [76, 84, 93, 35, 48, 73, 92, 23];
+      let data = [];
+      for (let i = 0; i < data1.length; i++) {
+        data[i] = data1[i];
+      }
+      for (let i = 0; i < data2.length; i++) {
+        data[data1.length + i] = data2[i];
+      }
+
+      for (let i = 0; i < data.length; i++) {
+        document.write(
+          `<br/> The ${i + 1} value of your data is ${data[i]} <br/>`
+        );
+      }
+
+      let data3 = [...data1, ...data2, ...data];
+      console.log(data3.toSorted());
+    </script>
+  </body>
+</html>

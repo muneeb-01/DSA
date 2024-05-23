@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data = [];
+      let str = "Muneeb";
+      if (typeof str === "string") {
+        str = str.split(" ").join("");
+      }
+      let reversedString;
+      let currentSize = data.length;
+      function push(newVal) {
+        if (!newVal == "") {
+          data[currentSize] = newVal;
+          currentSize += 1;
+        } else {
+          alert("first enter some value");
+        }
+      }
+
+      function pop() {
+        if (data.length > 0) {
+          currentSize -= 1;
+          data.length = currentSize;
+        }
+      }
+
+      function reverseStr(string) {
+        for (let i = string.length - 1; i >= 0; i--) {
+          data.push(string[i]);
+        }
+        return (reversedString = data.join(""));
+      }
+      function emptyData() {
+        currentSize = 0;
+        data.length = currentSize;
+      }
+      reverseStr(str);
+      emptyData();
+      console.log(reversedString);
+    </script>
+  </body>
+</html>

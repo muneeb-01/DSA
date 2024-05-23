@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      document.write(`Bubble Sorting <br/>`);
+      let data = [40, 30, 20, 10, 45, 24, 1];
+      document.write(`Data = ${data} <br/> <br/>`);
+      for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+          if (data[j] > data[j + 1]) {
+            let temp = data[j];
+            data[j] = data[j + 1];
+            data[j + 1] = temp;
+          }
+        }
+      }
+      document.write(`for (let i = 0; i < data.length; i++) {<br/>
+        for (let j = 0; j < data.length; j++) {<br/>
+          if (data[j] > data[j + 1]) {<br/>
+            let temp = data[j];<br/>
+            data[j] = data[j + 1];<br/>
+            data[j + 1] = temp;<br/>
+          }<br/>
+        }<br/>
+      } <br/> <br/>`);
+
+      document.write(`after sorting data = ${data} <br/>`);
+    </script>
+  </body>
+</html>

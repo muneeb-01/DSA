@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+      ];
+      let target = 21;
+
+      function binarySearch(arr, target, start = 0, end = arr.length - 1) {
+        let mid = Math.floor((start + end) / 2);
+        if (start > end) {
+          return "target not Found";
+        }
+        if (arr[mid] === target) {
+          return arr[mid];
+        } else if (arr[mid] < target) {
+          return binarySearch(arr, target, mid + 1, end);
+        } else {
+          return binarySearch(arr, target, start, mid - 1);
+        }
+      }
+      const search = binarySearch(arr, target);
+      console.log(search);
+    </script>
+  </body>
+</html>

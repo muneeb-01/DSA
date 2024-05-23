@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Node {
+        constructor(val) {
+          this.value = val;
+          this.left = null;
+          this.right = null;
+        }
+      }
+
+      class Tree {
+        constructor() {
+          this.root = null;
+        }
+        isEmpty() {
+          return this.root === null;
+        }
+        makeTree(val) {
+          const newNode = new Node(val);
+          if (this.isEmpty()) {
+            this.root = newNode;
+            return;
+          } else {
+            this.insertVal(this.root, newNode);
+          }
+        }
+        insertVal(root, node) {
+          if (root.value > node.value) {
+            if (root.left === null) {
+              root.left = node;
+            } else {
+              this.insertVal(root.left, node);
+            }
+          } else if (root.value < node.value) {
+            if (root.right === null) {
+              root.right = node;
+            } else {
+              this.insertVal(root.right, node);
+            }
+          }
+        }
+        search(root, val) {
+          if (root === null || val === undefined) {
+            return false;
+          }
+          if (root.value === val) {
+            return true;
+          }
+          if (root.value > val) {
+            return this.search(root.left, val);
+          }
+          if (root.value < val) {
+            return this.search(root.right, val);
+          }
+        }
+      }
+      const BST = new Tree();
+      BST.makeTree(1400);
+      BST.makeTree(700);
+      BST.makeTree(2100);
+      BST.makeTree(1500);
+      BST.makeTree(2200);
+      BST.makeTree(0);
+      BST.makeTree(1500);
+      console.log(BST.search(BST.root, 400));
+      console.log(BST);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traversing_of_an_Array</title>
+  </head>
+  <body>
+    <input type="text" id="elem" />
+    <button onclick="getElement()">Click to proceed</button>
+    <script>
+      //Basic Array
+      let data = [45, 65, 90, 63, 62, 89, 62, 92];
+
+      // NUmber you want to find
+      let find = 62;
+      let find2 = 89;
+
+      //loop to find a number
+      for (let i = 0; i < data.length; i++) {
+        if (find === data[i] || find2 === data[i]) {
+          console.warn(i);
+        }
+      }
+
+      //default function to find something
+      console.error(data.indexOf(find));
+
+      //array you want to store your values
+      let index = [];
+
+      //function for user to find something in array
+      function getElement() {
+        //input value from user
+        let inp = document.getElementById("elem").value;
+        inp = parseInt(inp);
+
+        //data for a user to find values
+        let data = [45, 65, 90, 63, 62, 89, 62, 92];
+
+        //validation so that user can only be able to type a number
+        if (typeof inp === "number") {
+          for (let i = 0; i < data.length; i++) {
+            if (inp === data[i]) {
+              index.push(i);
+            }
+          }
+        } else {
+          console.error("invalid Input Value");
+        }
+        console.log(index);
+      }
+    </script>
+  </body>
+</html>

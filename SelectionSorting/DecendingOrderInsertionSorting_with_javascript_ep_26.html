@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let arr = [45, 21, 51, 4, 23, 5, 42];
+    function reverseInsertionSorting(data) {
+      let currItem, j;
+      for (let i = 0; i < data.length; i++) {
+        j = i - 1;
+        currItem = data[i];
+        while (j >= 0 && data[j] < currItem) {
+          data[j + 1] = data[j];
+          j--;
+        }
+        //use data[j+1] because in while loop the j value firstly = 0 and after loop complete's it will decrease by one each time so for getting the previous position of j increase it by one (j+1)
+        data[j + 1] = currItem;
+      }
+
+      return data;
+    }
+    const sorting = reverseInsertionSorting(arr);
+    console.log(sorting);
+  </script>
+</html>

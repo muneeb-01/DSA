@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" placeholder="New Value in array" />
+    <button onclick="push()">Add New Value</button>
+    <button
+      onclick="
+        pop();
+        displayData();
+    "
+    >
+      Remove Last Value
+    </button>
+    <button onclick="displayData()">Display All Values</button>
+    <div>
+      <ul id="display"></ul>
+    </div>
+    <script>
+      let input = document.querySelector("#input");
+      let data = [];
+
+      let currentidx = data.length;
+      function push() {
+        let inpVal = document.querySelector("#input").value;
+        if (inpVal.length > 0) {
+          data[currentidx] = inpVal;
+          currentidx++;
+          console.log(data);
+        } else {
+          alert("Please enter some value");
+        }
+        input.value = "";
+      }
+      function pop() {
+        if (currentidx > 0) {
+          currentidx--;
+          data.length = currentidx;
+          console.log(data);
+        } else {
+          alert("no data in is availible to remove");
+        }
+      }
+
+      function displayData() {
+        const display = document.querySelector("#display");
+        if (data.length > 0) {
+          let list = data.map((item, idx) => {
+            return `
+        <li><span>${idx + 1}</span>. ${item}</li>
+            `;
+          });
+
+          list = list.join("");
+          display.innerHTML = list;
+        } else {
+          display.innerHTML = "";
+          alert("no data is avalible to show");
+        }
+      }
+    </script>
+  </body>
+</html>

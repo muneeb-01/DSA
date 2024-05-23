@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Learn what matter's about the object</h1>
+    <script>
+      let obj = {
+        name: "Muneeb",
+        faterName: "Muneer",
+        no_of_Sisters: 1,
+        no_of_Brothers: 1,
+        Siblings: ["Areeg", "Ateeb"],
+        getSiblings: function () {
+          return this.Siblings;
+        },
+      };
+      //to use any key from an object
+      console.log(obj.name);
+      //to use function from object
+      console.log(obj.Siblings);
+      //to target all the key's of object
+      for (const key in obj) {
+        console.log(key);
+      }
+      // to get the array of all the keys which are present in object
+      console.log(Object.keys(obj));
+      //to target all the key value's of object
+      for (const key in obj) {
+        console.log(obj[key]);
+      }
+      //to get all the key values of the object
+      console.log(Object.values(obj));
+
+      //to get the complete object in array form
+      console.log(Object.entries(obj));
+    </script>
+  </body>
+</html>
