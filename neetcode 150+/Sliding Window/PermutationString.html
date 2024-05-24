@@ -13,40 +13,38 @@
         let charCount = new Array(26).fill(0);
 
         for (let i = 0; i < s1.length; i++) {
-          const elemId = s1.charCodeAt(i) - "a".charCodeAt(0);
-          charCount[elemId]++;
+          const element = s1.charCodeAt(i) - "a".charCodeAt(0);
+          charCount[element]++;
         }
 
         let left = 0;
         let right = 0;
-        let count = 0;
+        let count = s1.length;
 
         while (right < s2.length) {
-          const rightElemId = s2.charCodeAt(right) - "a".charCodeAt(0);
-
-          if (charCount[rightElemId] > 0) {
+          const rightElem = s2.charCodeAt(right) - "a".charCodeAt(0);
+          if (charCount[rightElem] > 0) {
             count--;
           }
-          charCount[rightElemId]--;
+          charCount[rightElem]--;
           right++;
 
           if (count === 0) return true;
 
           if (right - left === s1.length) {
-            const leftElemId = s2.charCodeAt(left) - "a".charCodeAt(0);
-            if (charCount[leftElemId] >= 0) {
+            const leftElem = s2.charCodeAt(left) - "a".charCodeAt(0);
+            if (charCount[leftElem] >= 0) {
               count++;
             }
-            charCount[leftElemId]++;
+            charCount[leftElem]++;
             left++;
           }
-
-          return false;
         }
+        return false;
       }
 
-      const s1 = "muneeb";
-      const s2 = "kbikjbkklnlknoimuneebknkn";
+      const s1 = "abc";
+      const s2 = "bcsacb";
       console.log(checkInclusion(s1, s2));
     </script>
   </body>

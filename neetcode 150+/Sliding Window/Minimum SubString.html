@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //this function takes two string s , t and return the minimum substring from s which include all the characters of t.
+
+      function minWindow(s, t) {
+        if (t.length > s.length && !t && !s) return false;
+
+        let requiredChar = 0;
+        let charCount = {};
+        for (const char of t) {
+          charCount[char] = (charCount[char] || 0) + 1;
+          requiredChar++;
+        }
+        let minLength = Infinity;
+        let left = 0;
+        let right = 0;
+        let minStart = 0;
+        let charFound = 0;
+
+        while (right < s.length) {
+          let rightElem = s[right];
+          if (charCount[rightElem] > 0) {
+            charFound++;
+          }
+          charCount[rightElem] = (charCount[rightElem] || 0) - 1;
+
+          while (charFound === requiredChar) {
+            if (right - left + 1 < minLength) {
+              minLength = right - left + 1;
+              minStart = left;
+            }
+            const leftElem = s[left];
+            charCount[leftElem]++;
+            if (charCount[leftElem] > 0) {
+              charFound--;
+            }
+            left++;
+          }
+
+          right++;
+        }
+
+        return (minLength =
+          minLength == Infinity
+            ? ""
+            : s.substring(minStart, minStart + minLength));
+      }
+
+      // Example usage:
+      const s = "MUNEEBMUGHAL";
+      const t = "MMGL";
+      console.log(minWindow(s, t)); // Output: "EBMU"
+    </script>
+  </body>
+</html>
