@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function generateParenthesis(n) {
+        let result = [];
+        function addPair(str, open, close) {
+          if (str.length === 2 * n) {
+            result.push(str);
+            return;
+          }
+          if (open < n) {
+            addPair(str + "(", open + 1, close);
+          }
+          if (close < open) {
+            addPair(str + ")", open, close + 1);
+          }
+        }
+        addPair("", 0, 0);
+        return result;
+      }
+      // Example usage:
+      const n = 3;
+      console.log(generateParenthesis(n));
+    </script>
+  </body>
+</html>

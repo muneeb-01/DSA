@@ -10,19 +10,23 @@
       let s = "muneebmughal";
 
       function longestSubstring(str) {
-        let maxLength = 0;
         let start = 0;
-        let charmap = {};
+        let charCount = {};
+        let maxlength = 0;
 
         for (let end = 0; end < str.length; end++) {
-          let key = str[end];
-          if (charmap[key] !== undefined && charmap[key] >= start) {
-            start = charmap[key] + 1;
+          const elem = str[end];
+
+          if (charCount[elem] !== undefined && charCount[elem] >= start) {
+            start = charCount[elem] + 1;
           }
-          charmap[key] = end;
-          maxLength = Math.max(maxLength, end - start + 1);
+          charCount[elem] = end;
+          maxlength = Math.max(maxlength, end - start + 1);
         }
-        return maxLength;
+        return [
+          str.substring(start, maxlength + start),
+          `Length = ${maxlength}`,
+        ];
       }
 
       console.log(longestSubstring(s));

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function evalRPN(tokens) {
+        const stack = [];
+        for (const token of tokens) {
+          if (isOperater(token)) {
+            const oprend2 = stack.pop();
+            const oprend1 = stack.pop();
+            stack.push(operate(oprend1, oprend2, token));
+          } else {
+            stack.push(parseInt(token));
+          }
+        }
+        return stack.pop();
+      }
+
+      function isOperater(operator) {
+        if (
+          operator == "+" ||
+          operator == "-" ||
+          operator == "*" ||
+          operator == "/"
+        ) {
+          return true;
+        }
+      }
+
+      function operate(oprend1, oprend2, operater) {
+        switch (operater) {
+          case "+":
+            return oprend1 + oprend2;
+          case "-":
+            return oprend1 - oprend2;
+          case "*":
+            return oprend1 * oprend2;
+          case "/":
+            return Math.floor(oprend1 / oprend2);
+        }
+      }
+
+      // Example usage:
+      const tokens = ["2", "1", "+", "3", "*"];
+      console.log(evalRPN(tokens)); // Output: 9 (equivalent to (2 + 1) * 3)
+
+      const tokens2 = ["4", "13", "5", "/", "+"];
+      console.log(evalRPN(tokens2)); // Output: 6 (equivalent to 4 + (13 / 5))
+    </script>
+  </body>
+</html>

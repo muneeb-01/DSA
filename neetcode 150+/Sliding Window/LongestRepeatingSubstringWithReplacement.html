@@ -7,29 +7,48 @@
   </head>
   <body>
     <script>
-      const s = "XYYX";
-      const k = 2;
+      const s = "muneebmughal";
+      const k = 0;
       function repeatingCharacterWithReplacement(s, k) {
-        let maxlength = 0;
-        let left = 0;
-        let charcount = {};
+        let start = 0;
+        let charCount = {};
+        let maxLength = 0;
         let maxCount = 0;
 
-        for (let right = 0; right < s.length; right++) {
-          charcount[s[right]] = (charcount || 0) + 1;
-          maxCount = Math.max(maxCount, charcount[s[right]]);
+        for (let end = 0; end < s.length; end++) {
+          const element = s[end];
+          charCount[element] = (charCount[element] || 0) + 1;
+          maxCount = Math.max(maxCount, charCount[element]);
 
-          if (right - left + 1 - maxCount > k) {
-            charcount[s[left]]--;
-            left++;
+          while (end - start + 1 - maxCount > k) {
+            charCount[s[start]]--;
+            start++;
           }
-          maxlength = Math.max(maxlength, right - left + 1);
+          maxLength = Math.max(maxLength, end - start + 1);
         }
-
-        return maxlength;
+        return [`maxLength = ${maxLength}`];
       }
 
       console.log(repeatingCharacterWithReplacement(s, k));
     </script>
   </body>
 </html>
+
+<!-- 
+let maxlength = 0;
+        let left = 0;
+        let charcount = {};
+        let maxCount = 0;
+
+        for (let right = 0; right < s.length; right++) {
+          charcount[s[right]] = (charcount[s[right]] || 0) + 1;
+          maxCount = Math.max(maxCount, charcount[s[right]]);
+
+          while (right - left + 1 - maxCount > k) {
+            charcount[s[left]]--;
+            left++;
+          }
+          maxlength = Math.max(maxlength, right - left + 1);
+        }
+
+        return maxlength; -->

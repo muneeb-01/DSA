@@ -7,36 +7,34 @@
   </head>
   <body>
     <script>
-      function checkInclusion(s1, s2) {
-        if (s1.length > s2.length) return false;
+      //Onlt for the lowercase alphabets
 
-        let charCount = new Array(26).fill(0);
+      function checkInclusion(s1, s2) {
+        if (s1.length > s2.length && !s1 && !s2) return false;
+
+        const charCount = new Array(26).fill(0);
 
         for (let i = 0; i < s1.length; i++) {
           const element = s1.charCodeAt(i) - "a".charCodeAt(0);
           charCount[element]++;
         }
-
         let left = 0;
         let right = 0;
         let count = s1.length;
-
         while (right < s2.length) {
-          const rightElem = s2.charCodeAt(right) - "a".charCodeAt(0);
-          if (charCount[rightElem] > 0) {
+          const rightElement = s2.charCodeAt(right) - "a".charCodeAt(0);
+          if (charCount[rightElement] > 0) {
             count--;
           }
-          charCount[rightElem]--;
+          charCount[rightElement]--;
           right++;
-
           if (count === 0) return true;
-
           if (right - left === s1.length) {
-            const leftElem = s2.charCodeAt(left) - "a".charCodeAt(0);
-            if (charCount[leftElem] >= 0) {
+            const leftElement = s2.charCodeAt(left) - "a".charCodeAt(0);
+            charCount[leftElement]++;
+            if (charCount[leftElement] > 0) {
               count++;
             }
-            charCount[leftElem]++;
             left++;
           }
         }
@@ -44,8 +42,42 @@
       }
 
       const s1 = "abc";
-      const s2 = "bcsacb";
+      const s2 = "kjbdibacb";
       console.log(checkInclusion(s1, s2));
     </script>
   </body>
 </html>
+<!-- 
+if (s1.length > s2.length) return false;
+
+let charCount = new Array(26).fill(0);
+
+for (let i = 0; i < s1.length; i++) {
+  const element = s1.charCodeAt(i) - "a".charCodeAt(0);
+  charCount[element]++;
+}
+
+let left = 0;
+let right = 0;
+let count = s1.length;
+
+while (right < s2.length) {
+  const rightElem = s2.charCodeAt(right) - "a".charCodeAt(0);
+  if (charCount[rightElem] > 0) {
+    count--;
+  }
+  charCount[rightElem]--;
+  right++;
+
+  if (count === 0) return true;
+
+  if (right - left === s1.length) {
+    const leftElem = s2.charCodeAt(left) - "a".charCodeAt(0);
+    if (charCount[leftElem] >= 0) {
+      count++;
+    }
+    charCount[leftElem]++;
+    left++;
+  }
+}
+return false; -->

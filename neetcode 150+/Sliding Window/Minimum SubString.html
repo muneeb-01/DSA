@@ -11,52 +11,53 @@
 
       function minWindow(s, t) {
         if (t.length > s.length && !t && !s) return false;
-
-        let requiredChar = 0;
         let charCount = {};
+        let requiredChar = 0;
+
         for (const char of t) {
           charCount[char] = (charCount[char] || 0) + 1;
           requiredChar++;
         }
-        let minLength = Infinity;
-        let left = 0;
-        let right = 0;
+
+        let start = 0;
+        let end = 0;
         let minStart = 0;
+        let minLength = Infinity;
         let charFound = 0;
 
-        while (right < s.length) {
-          let rightElem = s[right];
-          if (charCount[rightElem] > 0) {
+        while (end < s.length) {
+          let rElem = s[end];
+          if (charCount[rElem] > 0) {
             charFound++;
           }
-          charCount[rightElem] = (charCount[rightElem] || 0) - 1;
+          charCount[rElem] = (charCount[rElem] || 0) - 1;
 
-          while (charFound === requiredChar) {
-            if (right - left + 1 < minLength) {
-              minLength = right - left + 1;
-              minStart = left;
+          while (charFound == requiredChar) {
+            if (end - start + 1 < minLength) {
+              minLength = end - start + 1;
+              minStart = start;
             }
-            const leftElem = s[left];
-            charCount[leftElem]++;
-            if (charCount[leftElem] > 0) {
+
+            const lElem = s[start];
+            charCount[lElem]++;
+            if (charCount[lElem] > 0) {
               charFound--;
             }
-            left++;
+            start++;
           }
-
-          right++;
+          end++;
         }
 
-        return (minLength =
-          minLength == Infinity
-            ? ""
-            : s.substring(minStart, minStart + minLength));
+        return [
+          `length = ${minLength}`,
+          `String = ${s.substring(minStart, minLength + minStart)}`,
+        ];
       }
 
       // Example usage:
       const s = "MUNEEBMUGHAL";
-      const t = "MMGL";
-      console.log(minWindow(s, t)); // Output: "EBMU"
+      const t = "ML";
+      console.log(minWindow(s.toUpperCase(), t.toUpperCase())); // Output: "MUGHAL"
     </script>
   </body>
 </html>

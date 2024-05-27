@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isValidParentheses(s) {
+        let stack = [];
+        let pairs = {
+          ")": "(",
+          "}": "{",
+          "]": "[",
+        };
+
+        for (const paren of s) {
+          if (paren == "(" || paren == "[" || paren == "{") {
+            stack.push(paren);
+          } else {
+            if (stack.length === 0) {
+              return false;
+            }
+            const openParentheses = stack.pop();
+            if (openParentheses !== pairs[paren]) {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      // Example usage:
+      console.log(isValidParentheses("()")); // true
+      console.log(isValidParentheses("()[]{}")); // true
+      console.log(isValidParentheses("([)]")); // false
+      console.log(isValidParentheses("{[]}")); // true
+      console.log(isValidParentheses("(]")); // false
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Stack {
+        constructor() {
+          this.Stack = [];
+          this.minStack = [];
+        }
+        getMin() {
+          if (this.minStack.length === 0) return false;
+          return this.minStack[this.minStack.length - 1];
+        }
+        push(val) {
+          if (val == undefined) return "enter any value";
+          this.Stack.push(val);
+          if (this.minStack.length == 0 || val <= this.getMin()) {
+            this.minStack.push(val);
+          }
+          return [this.Stack, this.minStack];
+        }
+
+        pop() {
+          const popped = this.Stack.pop();
+          if (popped === this.getMin()) {
+            this.minStack.pop();
+          }
+          return [this.Stack, this.minStack];
+        }
+        top() {
+          return this.Stack[this.Stack.length - 1];
+        }
+        bottom() {
+          return this.Stack[0];
+        }
+        middle() {
+          if (this.Stack.length === 1) {
+            return this.Stack[0];
+          } else {
+            return this.Stack[Math.floor(this.Stack.length / 2)];
+          }
+        }
+      }
+
+      const S1 = new Stack();
+      console.log(S1.push(2));
+      console.log(S1.push(4));
+      console.log(S1.push(6));
+      console.log(S1.push(8));
+      console.log(S1.push(10));
+      console.log(S1.push(12));
+      console.log(S1.push(14));
+      console.log(S1.push(16));
+      console.log(S1.push(18));
+      console.log(S1.push(20));
+    </script>
+  </body>
+</html>
