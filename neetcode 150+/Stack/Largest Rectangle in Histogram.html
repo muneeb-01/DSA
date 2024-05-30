@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function largestRectangleArea(heights) {
+        let stack = [];
+        let index = 0;
+        let maxArea = 0;
+
+        while (index < heights.length) {
+          if (
+            stack.length === 0 ||
+            heights[index] >= heights[stack[stack.length - 1]]
+          ) {
+            stack.push(index++);
+          } else {
+            const topOfStack = stack.pop();
+            const height = heights[topOfStack];
+            const width =
+              stack.length === 0 ? index : index - stack[stack.length - 1] - 1;
+            maxArea = Math.max(maxArea, height * width);
+          }
+        }
+        while (stack.length > 0) {
+          const topOfStack = stack.pop();
+          const height = heights[topOfStack];
+          const width =
+            stack.length === 0 ? index : index - stack[stack.length - 1] - 1;
+          maxArea = Math.max(maxArea, height * width);
+        }
+        return maxArea;
+      }
+
+      // Example usage:
+      const heights = [2, 1, 5, 6, 2, 3];
+      console.log(largestRectangleArea(heights)); // Output should be 10
+    </script>
+  </body>
+</html>
