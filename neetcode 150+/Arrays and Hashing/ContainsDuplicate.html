@@ -8,6 +8,7 @@
   <body>
     <script>
       //Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+      //return an array which return all num only one time and number of duplicates
       const arr1 = [1, 2, 3, 1];
       const arr2 = [1, 2, 3, 4];
       const arr3 = [1, 1, 1, 2, 2, 2, 3, 4, 5, 6];
@@ -18,16 +19,14 @@
 
         for (const num of arr) {
           if (seen.includes(num)) {
-            console.log(true);
-            duplicates[num] = duplicates[num] ? duplicates[num] + 1 : 1;
+            duplicates[num] = duplicates[num] + 1 || 1;
           } else {
             seen.push(num);
-            console.log(false);
           }
         }
-        console.log(seen, duplicates);
+        return [seen, duplicates];
       }
-      containDuplicates(arr3);
+      console.log(containDuplicates(arr3));
     </script>
   </body>
 </html>

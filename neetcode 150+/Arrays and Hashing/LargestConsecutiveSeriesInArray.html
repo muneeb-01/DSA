@@ -11,18 +11,16 @@
       let array2 = [100, 4, 200, 5, 8, 10, 9];
 
       function longestConsecutive(nums) {
-        if (nums.lenght === 0) return 0;
-
+        if (nums.length === 0) return;
         let maxLength = 0;
-        const numSet = new Set(nums);
-
-        for (const num of numSet) {
+        let numSet = new Set(nums);
+        for (const num of nums) {
           if (!numSet.has(num - 1)) {
             let currentNum = num;
             let currentLength = 1;
             while (numSet.has(currentNum + 1)) {
-              currentLength++;
               currentNum++;
+              currentLength++;
             }
             maxLength = Math.max(maxLength, currentLength);
           }

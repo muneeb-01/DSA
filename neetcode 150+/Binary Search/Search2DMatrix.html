@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let matrix = [
+        [1, 2, 4, 8],
+        [10, 11, 12, 13],
+        [14, 20, 30, 40],
+      ];
+      let target = 10;
+
+      class Search2DMatrix {
+        constructor(array2D) {
+          this.matrix = array2D;
+          this.cols = this.matrix[0].length;
+          this.rows = this.matrix.length;
+        }
+
+        search(target) {
+          let left = 0;
+          let right = this.cols * this.rows - 1;
+
+          while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            const midValue =
+              this.matrix[Math.floor(mid / this.cols)][mid % this.cols];
+
+            if (midValue == target) {
+              return {
+                value: midValue,
+                index: `row no:${Math.floor(mid / this.cols)}, column no:${
+                  mid % this.cols
+                }`,
+                message: true,
+              };
+            } else if (midValue < target) {
+              left = mid + 1;
+            } else {
+              right = mid - 1;
+            }
+          }
+
+          console.log([left, right]);
+        }
+      }
+
+      const Search2DMatrix1 = new Search2DMatrix(matrix);
+      console.log(Search2DMatrix1.search(10));
+    </script>
+  </body>
+</html>

@@ -15,7 +15,6 @@
 
       function objectApproach(arr) {
         let anagramObject = {};
-
         for (const str of arr) {
           const sortedStr = str.split("").sort().join("");
           if (anagramObject[sortedStr]) {
@@ -24,22 +23,20 @@
             anagramObject[sortedStr] = [str];
           }
         }
-
-        return anagramObject;
+        return `Using Object : ${JSON.stringify(anagramObject)}`;
       }
 
       function mapApproch(arr) {
         let anagramMap = new Map();
         for (const str of arr) {
           const sortedStr = str.split("").sort().join("");
-          if (anagramMap.has(sortedStr)) {
+          if (anagramMap.get(sortedStr)) {
             anagramMap.get(sortedStr).push(str);
           } else {
             anagramMap.set(sortedStr, [str]);
           }
         }
-
-        return anagramMap;
+        return `Using Map : ${JSON.stringify(Object.fromEntries(anagramMap))}`;
       }
 
       console.log(mapApproch(strs));
